@@ -1,0 +1,260 @@
+import telebot
+import random
+from telebot import types
+
+
+bot = telebot.TeleBot("7237748405:AAFqxR5TnrdnwwK5bS_LLuSu-NI3Yk6MI0M")
+
+
+with open("example.txt", "r", encoding="utf-8") as file:
+    lyrics = file.readlines()
+for i in range(len(lyrics)):
+    lyrics[i] = lyrics[i].strip().split("!!")
+b = []
+for i in range(len(lyrics)):
+    b.append(lyrics[i][0].upper())
+
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    btn1 = types.KeyboardButton("Random WINX transformations")
+    btn2 = types.KeyboardButton("Winxology")
+    markup.add(btn1, btn2)
+    bot.send_message(message.chat.id,
+                     text="Hi!, {0.first_name}!".format(
+                         message.from_user), reply_markup=markup)
+@bot.message_handler(content_types=['text'])
+def func(message):
+    if (message.text == "Random WINX transformations"):
+        markup = types.InlineKeyboardMarkup()
+        random_lyric = random.choice(lyrics)
+        markup.add(types.InlineKeyboardButton(random_lyric[0], url=random_lyric[1]))
+        bot.reply_to(message, "Here it is...", reply_markup=markup)
+    elif (message.text == "Winxology"):
+        bot.reply_to(message, "OK, type the name")
+    elif (message.text.upper() == "BLOOM"):
+        bot.reply_to(message, """
+Title:
+Princess Bloom of Domino
+Fairy of the Dragon Flame
+Fairy of Dragon Fire
+Keeper of the Dragon's Flame
+Guardian Fairy of the Kingdom of Domino
+
+ALIAS:
+Varanda
+Dark Bloom
+Cake Girl
+
+CLASS:
+Fairy
+Dark Fairy (As Dark Bloom)
+
+GENDER:
+Female
+
+AGE (AT FIRST APPEARANCE):
+16
+
+BIRTHDAY:
+December 10 (Original)
+January 27 (4Kids)
+
+SIGN:
+Dragon
+
+Princess Bloom is the Fairy of the Dragon Flame. She is Prince Sky's fiancée, the second princess of Domino and its Guardian Fairy. She is one of the founding members of the Winx Club, where she is recognized as the leader of their group, which also signifies her status as the central protagonist of the Winx Club series as a whole. She is also an alumna/student of the Alfea College for Fairies as of The Secret of the Lost Kingdom.
+            """)
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1266343443056300092/Bloom4_13.jpg?ex=66ca607c&is=66c90efc&hm=d3eaf01c77400229e683d0bfae8d112279efeacfdae47906fd1adc79d54f3b14&")
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1266343443332988938/71bd568789fc02e553c217ee6c265d90.jpg?ex=66ca607c&is=66c90efc&hm=88d9d515207355b35ea155ace65091e533a60d8eff564649f8f10aaff97e7419&")
+        bot.send_video(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1266347104348143646/3f8aa1eb5c388e9f66447b3ab5bf40db.mp4?ex=66ca63e5&is=66c91265&hm=599754fb9e7f212e00508635d44e503dd50ab29e9602c38a138e0038b4a2e928&")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Random WINX transformations")
+        btn2 = types.KeyboardButton("Winxology")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id,
+                         text="OK, what's next?".format(
+                             message.from_user), reply_markup=markup)
+    elif (message.text.upper() == "STELLA"):
+        bot.reply_to(message, """
+Title:        
+Crown Princess Stella of Solaria
+Princess of the Sun and the Moon
+Fairy of the Sun and the Moon
+Fairy of Sunlight
+Fairy of the Shining Sun
+Fairy of Light
+Fairy of the Sun, Moon and Stars
+Guardian Fairy of the Kingdom of Solaria
+Miss Solaria
+Miss Magix (S1E12)
+Queen Stella of Solaria (S6E19 - S6E20)
+Alias
+Mon-Stella (S3E02 - S3E04)
+Dark Stella (S5E07)
+Evil Stella (S6E19)
+Dr. Vanilla (Comics; I45)
+Class
+Fairy
+Gender
+Female
+Age (at first appearance)
+17
+Birthday
+August 18 (Cinélume)
+August 10 (4Kids)
+Sign
+Mermaid
+Crown Princess Stella is the Fairy of the Sun and Moon, or the Fairy of the Shining Sun. She is a creative, skilled artist who is Brandon's fiancée. Stella is Solaria's Guardian Fairy, as well as the sole heiress to the Solarian Royal Throne, signified by her status as keeper of the royal family ring. She is one of the founding members of the Winx Club and is an almuna/student of the Alfea College for Fairies. Though immature and even selfish and bossy at times, Stella cares for her fellow Winx and sees herself responsible for them all as sort of a big sisterly figure.
+        """)
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276861388463276042/Outfits_-_Stella_-_Season_1_-_Basic_1.png?ex=66cb1155&is=66c9bfd5&hm=0e90a3fc7230673fc3745ba727200e85d24b02698e43a746d97f0d5e891422e6&")
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276861388748230686/Stella_Winx_Club.png?ex=66cb1156&is=66c9bfd6&hm=90c922671e90773f7c1d5b5669446fcbd4f859c19f0fd58c1c537bcc99dea78b&")
+        bot.send_video(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276865500265316424/VID_20231006_205421_930.mp4?ex=66cb152a&is=66c9c3aa&hm=5dd0689d4a188c5ca32979dd4290f5d37f58a552d1f13d68df0ed6fa06d60587&")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Random WINX transformations")
+        btn2 = types.KeyboardButton("Winxology")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id,
+                         text="OK, what's next?".format(
+                             message.from_user), reply_markup=markup)
+    elif (message.text.upper() == "MUSA"):
+        bot.reply_to(message, """
+Title
+Fairy of Music
+Princess Musa of the Harmonic Nebula (4Kids)
+Guardian Fairy of the Kingdom of Melody
+Alias
+Monster Musa (S5E08)
+Myria (New Powers)
+Class
+Fairy
+Gender
+Female
+Age (at first appearance)
+16
+Birthday
+May 30
+Sign
+Elf
+Musa is the Fairy of Music. She hails from Melody and currently acts as its Guardian Fairy. Musa is the daughter of Matlin and Ho-Boe, and is the girlfriend of Riven. She and her boyfriend, Riven, have a rocky and difficult but passionate relationship. Musa is a skilled singer and musician. She is one of the founding members of the Winx Club, being the fifth Winx girl introduced after Bloom, Stella, Flora and Tecna, and is an alumna/student of the Alfea College for Fairies.
+        """)
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276861912562401411/StrongMusa.jpg?ex=66cb11d2&is=66c9c052&hm=8c38fb83800599b2b0aa11dcbf15504b92bf06de23c7f46b684faa7064a3be40&")
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276861912839360533/Winx_Club_Musa_Magic_Winx_pose2.png?ex=66cb11d2&is=66c9c052&hm=5d1cc70ebbe5954a60f9203b53bdd3e4f58d225fb0d240cf5ccab90daf9238ac&")
+        bot.send_video(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276866215100284999/eea25878f2c01ad952c8e1486959d218.mp4?ex=66cb15d4&is=66c9c454&hm=f68eb7bc373277f6a71856ff79add9fd410c5741079a21c08e6f7a7d98157fcc&")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Random WINX transformations")
+        btn2 = types.KeyboardButton("Winxology")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id,
+                         text="OK, what's next?".format(
+                             message.from_user), reply_markup=markup)
+    elif (message.text.upper() == "FLORA"):
+        bot.reply_to(message, """
+Title
+Fairy of Nature
+Fairy of Flowers
+Guardian Fairy of the Kingdom of Linphea
+Alias
+Princess Flora of Linphea
+Class
+Fairy
+Gender
+Female
+Age (at first appearance)
+16
+Birthday
+March 1
+Sign
+Dryad
+Flora is the Fairy of Nature. She hails from Linphea, where she currently acts as its Guardian Fairy. She is Helia's girlfriend. The team usually relies on her for potions and magic advice. Flora is one of the founding members of the Winx Club, being the third Winx girl introduced after Bloom and Stella, and is an alumna/student of the Alfea College for Fairies as of The Secret of the Lost Kingdom.
+        """)
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276861689467506718/1_.png?ex=66cb119d&is=66c9c01d&hm=f68730a4b09462ab6011e8cc65ba47e55d02d36c790773bd6a8ae08d2d5c855e&")
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276861689882476544/Flora_2_Winx_Club.png?ex=66cb119d&is=66c9c01d&hm=4d8bb67ed8672a1f1ce7a4e210ef526906092e879f1554bbb5f6a942c13eecfc&")
+        bot.send_video(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276866144984240130/8e419fb3db18c43448f6dfc42b836d35.mp4?ex=66cb15c3&is=66c9c443&hm=49d12ffbf6ebfb7e8ce3271fda12632e63e365c326518584ede3e6a74adb23ee&")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Random WINX transformations")
+        btn2 = types.KeyboardButton("Winxology")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id,
+                         text="OK, what's next?".format(
+                             message.from_user), reply_markup=markup)
+    elif (message.text.upper() == "TECNA"):
+        bot.reply_to(message, """
+Title
+Fairy of Technology
+Fairy of Technomagic
+Princess Tecna of Titania (Comics; up to I90)
+Guardian Fairy of the Kingdom of Zenith
+Alias
+Robot Tecna (S5E04)
+Class
+Fairy
+Gender
+Female
+Age (at first appearance)
+16
+Birthday
+December 16 (Cinélume)
+June 8 (4Kids)
+Sign
+Triton
+Tecna is the Fairy of Technology. She hails from Zenith and currently acts as its Guardian Fairy. Tecna is Timmy's girlfriend. She is one of the founding members of the Winx Club, being the fourth Winx girl introduced after Bloom, Stella and Flora, and is an alumna/student of the Alfea College for Fairies as of The Secret of the Lost Kingdom. Tecna is often relied on as the group's tactician and strategist thanks to her high IQ and ability to keep a cool, rational head even in times of high stress.
+        """)
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276862105869619290/Tecna_season_1_civilian.png?ex=66cb1200&is=66c9c080&hm=a9dd016bb8903ab18d38d4ee2ae2db17b97f3018e9093824c3a227be87cc4b45&")
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276862106091786272/Tecna_Winx_Club.png?ex=66cb1201&is=66c9c081&hm=8af605dfc97f7f0743ba47fdfb32c321f5f4ce97ad41c1bf0e2da32bf44579fd&")
+        bot.send_video(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276866439810252820/b59eaff54391c90ee6b51206eba8fd63.mp4?ex=66cb160a&is=66c9c48a&hm=3c7e2521a1bf0a284886375c194aa3a926cf3d3807d0cd33805120458c6f3781&")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Random WINX transformations")
+        btn2 = types.KeyboardButton("Winxology")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id,
+                         text="OK, what's next?".format(
+                             message.from_user), reply_markup=markup)
+    elif (message.text.upper() == "AISHA" or message.text.upper() == "LAYLA"):
+        bot.reply_to(message, """
+Title
+Crown Princess Aisha of Andros
+Princess Layla of Andros
+Fairy of Waves
+Fairy of the Waves
+Fairy of Oceans and Tides
+Fairy of Fluids
+Guardian Fairy of the Kingdom of Andros
+Class
+Fairy
+Gender
+Female
+Age (at first appearance)
+17
+Birthday
+June 15
+Sign
+Chimera
+Crown Princess Aisha (Princess Layla in some versions) is the Fairy of Waves. She is the Crown Princess of Andros, as well as its Guardian Fairy. Aisha joins the Winx Club as its sixth member in the second season, and she is an alumna/student of the Alfea College for Fairies. Aisha is a self-confident and talented athlete who excels at dancing and swimming.
+        """)
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276862260819787807/The-winx-club_79148_top_1.jpg?ex=66cb1225&is=66c9c0a5&hm=ab9fd120fe9ec6d197fa35379259435299ea138703707fbcccbdf8866f5849a0&")
+        bot.send_photo(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276862261117452371/Aisha_Winx_Club.png?ex=66cb1226&is=66c9c0a6&hm=1e358ecc55a17a59c61302f5214d3d1f71bd7d1ddbd715fc1d699cf007780c03&")
+        bot.send_video(message.chat.id, "https://cdn.discordapp.com/attachments/1164543330051428392/1276867487685939232/ab8927f7bae205df36af110c3ceff65e.mp4?ex=66cb1704&is=66c9c584&hm=9200d99695fcec3ad71023ca15a661eb33123b806ca00e28eacbf91314a661a6&")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("Random WINX transformations")
+        btn2 = types.KeyboardButton("Winxology")
+        markup.add(btn1, btn2)
+        bot.send_message(message.chat.id,
+                         text="OK, what's next?".format(
+                             message.from_user), reply_markup=markup)
+    else:
+        if (message.text.upper() in b):
+            markup = types.InlineKeyboardMarkup()
+            a = 0
+            for i in range(len(lyrics)):
+                if message.text.upper() in lyrics[i][0].upper():
+                    a = i
+                    break
+            markup.add(types.InlineKeyboardButton(lyrics[a][0], url=lyrics[a][1]))
+            bot.reply_to(message, "Here it is...", reply_markup=markup)
+        else:
+            bot.send_message(message.chat.id, text="No idea...")
+
+
+bot.polling(none_stop=True)
